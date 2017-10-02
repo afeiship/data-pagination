@@ -1,0 +1,26 @@
+{
+  "name": "next-min",
+  "description": "Computes the minimum value of array. If array is empty or falsey, undefined is returned.",
+  "main": "dist/next-min.js",
+  "authors": [
+    "afei"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "next"
+  ],
+  "homepage": "https://github.com/afeiship/next-min",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "gulp",
+    "gulpfile.js"
+  ]
+}
