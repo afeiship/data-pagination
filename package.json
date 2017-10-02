@@ -1,6 +1,6 @@
 {
   "name": "next-min",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Computes the minimum value of array. If array is empty or falsey, undefined is returned.",
   "homepage": "https://github.com/afeiship/next-min",
   "author": {
