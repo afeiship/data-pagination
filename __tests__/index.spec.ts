@@ -1,5 +1,6 @@
 import DataPagination from '../src';
 import data from './cases.json';
+import data6 from './cases6.json';
 
 describe('api.basic', () => {
   test('Normal single value case', () => {
@@ -38,4 +39,33 @@ describe('api.basic', () => {
     expect(dp.page(1.5)).toEqual([])
     expect(dp.page(100)).toEqual([])
   });
+
+  // api set data
+  test('api setData', () => {
+    const dp = new DataPagination(data, { pageSize: 5 });
+    dp.setData(data6);
+    expect(dp.total).toBe(data6.length);
+    expect(dp.totalPage).toBe(2);
+    expect(dp.items).toEqual(data6.slice(0, 5));
+  });
+
+  // api set options
+  test('api setOptions', () => {
+    // data: 26 items
+    // data6: 6 items
+    const dp = new DataPagination(data, { pageSize: 5 });
+    expect(dp.total).toBe(26);
+    expect(dp.totalPage).toBe(6);
+    expect(dp.items).toEqual(data.slice(0, 5));
+
+    dp.setOptions({ pageSize: 10 });
+    expect(dp.total).toBe(26);
+    expect(dp.totalPage).toBe(3);
+    expect(dp.items).toEqual(data.slice(0, 10));
+
+    dp.setOptions({ pageSize: 20 });
+    expect(dp.total).toBe(26);
+    expect(dp.totalPage).toBe(2);
+    expect(dp.items).toEqual(data.slice(0, 20));
+  })
 });

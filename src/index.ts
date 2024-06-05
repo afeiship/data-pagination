@@ -10,12 +10,22 @@ const defaultOptions: PaginationOptions = {
 };
 
 class DataPagination {
-  public data: any[];
-  public options: PaginationOptions;
-  public currentPage: number;
+  private data: any[];
+  private options: PaginationOptions;
+  private currentPage: number;
 
   constructor(inData: any[], options?: PaginationOptions) {
     this.data = inData;
+    this.options = { ...defaultOptions, ...options };
+    this.currentPage = this.options.page!;
+  }
+
+  setData(inData: any[]) {
+    this.data = inData;
+    this.currentPage = 1;
+  }
+
+  setOptions(options: PaginationOptions) {
     this.options = { ...defaultOptions, ...options };
     this.currentPage = this.options.page!;
   }
