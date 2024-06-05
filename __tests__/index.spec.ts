@@ -10,6 +10,7 @@ describe('api.basic', () => {
     const pageData = dp.page(2);
 
     expect(totalPage).toBe(3);
+    expect(dp.total).toBe(data.length);
     expect(firstPageData).toEqual(data.slice(0, 10));
     expect(lastPageData).toEqual(data.slice(20, 30));
     expect(pageData).toEqual(data.slice(10, 20));

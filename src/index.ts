@@ -20,8 +20,12 @@ class DataPagination {
     this.currentPage = this.options.page!;
   }
 
+  get total() {
+    return this.data.length;
+  }
+
   get totalPage() {
-    return Math.ceil(this.data.length / this.options.pageSize!);
+    return Math.ceil(this.total / this.options.pageSize!);
   }
 
   get items() {
@@ -29,14 +33,14 @@ class DataPagination {
   }
 
   page(page: number) {
-    if(!this.isValidatePage(page)) return [];
+    if (!this.isValidatePage(page)) return [];
     const start = (page - 1) * this.options.pageSize!;
     const end = start + this.options.pageSize!;
     return this.data.slice(start, end);
   }
 
   to(page: number) {
-    if(!this.isValidatePage(page)) return;
+    if (!this.isValidatePage(page)) return;
     this.currentPage = page;
     this.options.onChange?.(page, this.options.pageSize!);
   }
