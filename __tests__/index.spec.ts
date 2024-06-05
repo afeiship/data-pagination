@@ -14,4 +14,19 @@ describe('api.basic', () => {
     expect(lastPageData).toEqual(data.slice(20, 30));
     expect(pageData).toEqual(data.slice(10, 20));
   });
+
+  test('api first/last/prev/next', () => {
+    const dp = new DataPagination(data);
+    dp.first();
+    expect(dp.items).toEqual(data.slice(0, 10));
+
+    dp.last();
+    expect(dp.items).toEqual(data.slice(20, 30));
+
+    dp.prev();
+    expect(dp.items).toEqual(data.slice(10, 20));
+
+    dp.next();
+    expect(dp.items).toEqual(data.slice(20, 30));
+  });
 });

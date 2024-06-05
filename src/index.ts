@@ -1,42 +1,18 @@
-// const items = [/*data*/];
-// const pagination = new Pagination(items, {
-//   pageSize: 10,
-//   page: 1,
-//   total: items.length,
-//   onChange: (page, pageSize) => {
-//     console.log(page, pageSize);
-//   }
-// });
-//
-// // to first:
-// pagination.to(1);
-// // to last
-// pagination.to(pagination.totalPage);
-// // to `num` page
-// pagination.to(num);
-//
-// // to next page
-// pagination.next();
-// // to prev page
-// pagination.prev();
-
 export interface PaginationOptions {
   pageSize?: number;
   page?: number;
-  total?: number;
   onChange?: (page: number, pageSize: number) => void;
 }
 
 const defaultOptions: PaginationOptions = {
   pageSize: 10,
   page: 1,
-  total: 0,
 };
 
 class DataPagination {
-  private data: any[];
-  private options: PaginationOptions;
-  private currentPage: number;
+  public data: any[];
+  public options: PaginationOptions;
+  public currentPage: number;
 
   constructor(inData: any[], options?: PaginationOptions) {
     this.data = inData;
@@ -44,12 +20,8 @@ class DataPagination {
     this.currentPage = this.options.page!;
   }
 
-  get total() {
-    return this.data.length;
-  }
-
   get totalPage() {
-    return Math.ceil(this.total / this.options.pageSize!);
+    return Math.ceil(this.data.length / this.options.pageSize!);
   }
 
   get items() {
@@ -65,7 +37,7 @@ class DataPagination {
   to(page: number) {
     if (page < 1 || page > this.totalPage) return;
     this.currentPage = page;
-    this.options.onChange && this.options.onChange(page, this.options.pageSize!);
+    this.options.onChange?.(page, this.options.pageSize!);
   }
 
   next() {
