@@ -17,6 +17,18 @@ describe('api.basic', () => {
     expect(pageData).toEqual(data.slice(10, 20));
   });
 
+  test('core api: goto, goto page', () => {
+    const dp = new DataPagination(data);
+    dp.goto(2);
+    expect(dp.items).toEqual(data.slice(10, 20));
+  });
+
+  test('core api: page, get current page data', () => {
+    const dp = new DataPagination(data);
+    const res = dp.page(2);
+    expect(res).toEqual(data.slice(10, 20));
+  });
+
   test('api first/last/prev/next', () => {
     const dp = new DataPagination(data);
     dp.first();
@@ -34,10 +46,10 @@ describe('api.basic', () => {
 
   test('unexpected input', () => {
     const dp = new DataPagination(data);
-    expect(dp.page(0)).toEqual([])
-    expect(dp.page(-1)).toEqual([])
-    expect(dp.page(1.5)).toEqual([])
-    expect(dp.page(100)).toEqual([])
+    expect(dp.page(0)).toEqual([]);
+    expect(dp.page(-1)).toEqual([]);
+    expect(dp.page(1.5)).toEqual([]);
+    expect(dp.page(100)).toEqual([]);
   });
 
   // api set data
@@ -67,5 +79,5 @@ describe('api.basic', () => {
     expect(dp.total).toBe(26);
     expect(dp.totalPage).toBe(2);
     expect(dp.items).toEqual(data.slice(0, 20));
-  })
+  });
 });

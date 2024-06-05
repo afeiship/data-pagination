@@ -30,7 +30,7 @@ dp.next();
 dp.prev();
 
 // to page 2
-dp.to(2);
+dp.goto(2);
 ```
 
 ## license

@@ -55,28 +55,27 @@ class DataPagination {
     return this.data.slice(start, end);
   }
 
-  to(page: number) {
+  goto(page: number) {
     if (!this.isValidatePage(page)) return;
     this.currentPage = page;
     this.options.onChange?.(page, this.options.pageSize!);
   }
 
   next() {
-    this.to(this.currentPage + 1);
+    this.goto(this.currentPage + 1);
   }
 
   prev() {
-    this.to(this.currentPage - 1);
+    this.goto(this.currentPage - 1);
   }
 
   first() {
-    this.to(1);
+    this.goto(1);
   }
 
   last() {
-    this.to(this.totalPage);
+    this.goto(this.totalPage);
   }
-
 }
 
 
