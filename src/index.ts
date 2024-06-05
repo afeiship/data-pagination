@@ -14,6 +14,12 @@ class DataPagination {
   private options: PaginationOptions;
   private currentPage: number;
 
+  private isValidatePage(page: number) {
+    const isValidNumber = Math.floor(page) === page;
+    const isInRange = page >= 1 && page <= this.totalPage;
+    return isValidNumber && isInRange;
+  }
+
   constructor(inData: any[], options?: PaginationOptions) {
     this.data = inData;
     this.options = { ...defaultOptions, ...options };
@@ -71,11 +77,6 @@ class DataPagination {
     this.to(this.totalPage);
   }
 
-  private isValidatePage(page: number) {
-    const isValidNumber = Math.floor(page) === page;
-    const isInRange = page >= 1 && page <= this.totalPage;
-    return isValidNumber && isInRange;
-  }
 }
 
 
