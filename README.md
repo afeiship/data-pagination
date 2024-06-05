@@ -33,11 +33,6 @@ dp.prev();
 dp.to(2);
 ```
 
-## types
-```ts
-/// <reference types="@jswork/data-pagination/global.d.ts" />
-```
-
 ## license
 Code released under [the MIT license](https://github.com/afeiship/data-pagination/blob/master/LICENSE.txt).
 
