@@ -13,9 +13,24 @@ npm install @jswork/data-pagination
 
 ## usage
 ```js
-import dataPagination from '@jswork/data-pagination';
+import DataPagination from '@jswork/data-pagination';
 
-// usage goes here.
+const dp = new DataPagination([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+// to first page
+dp.first();
+
+// to last page
+dp.last();
+
+// to next page
+dp.next();
+
+// to prev page
+dp.prev();
+
+// to page 2
+dp.to(2);
 ```
 
 ## types

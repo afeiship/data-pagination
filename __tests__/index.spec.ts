@@ -29,4 +29,12 @@ describe('api.basic', () => {
     dp.next();
     expect(dp.items).toEqual(data.slice(20, 30));
   });
+
+  test('unexpected input', () => {
+    const dp = new DataPagination(data);
+    expect(dp.page(0)).toEqual([])
+    expect(dp.page(-1)).toEqual([])
+    expect(dp.page(1.5)).toEqual([])
+    expect(dp.page(100)).toEqual([])
+  });
 });

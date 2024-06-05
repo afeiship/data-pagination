@@ -29,13 +29,14 @@ class DataPagination {
   }
 
   page(page: number) {
+    if(!this.isValidatePage(page)) return [];
     const start = (page - 1) * this.options.pageSize!;
     const end = start + this.options.pageSize!;
     return this.data.slice(start, end);
   }
 
   to(page: number) {
-    if (page < 1 || page > this.totalPage) return;
+    if(!this.isValidatePage(page)) return;
     this.currentPage = page;
     this.options.onChange?.(page, this.options.pageSize!);
   }
@@ -54,6 +55,12 @@ class DataPagination {
 
   last() {
     this.to(this.totalPage);
+  }
+
+  private isValidatePage(page: number) {
+    const isValidNumber = Math.floor(page) === page;
+    const isInRange = page >= 1 && page <= this.totalPage;
+    return isValidNumber && isInRange;
   }
 }
 
